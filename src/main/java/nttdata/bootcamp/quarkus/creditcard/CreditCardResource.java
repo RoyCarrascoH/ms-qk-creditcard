@@ -37,21 +37,6 @@ public class CreditCardResource {
         creditCardService.save(creditCardEntity);
         return Response.ok(creditCardEntity).status(201).build();
     }
-    @PUT
-    @Path("{idCreditCard}")
-    @Transactional
-    public CreditCardEntity updateClient(@PathParam("idClient") Long idClient, CreditCardEntity creditCardEntity) {
-        if (creditCardEntity.getIdCreditCard() == null) {
-            throw new WebApplicationException("Credit Card person type was not set on request.", 422);
-        }
-        CreditCardEntity entity = creditCardService.findById(idClient);
-        if (entity == null) {
-            throw new WebApplicationException("Client with id of " + idClient + " does not exist.", 404);
-        }
-
-        //entity = Utilitarios.saveClient(entity, creditCardEntity);
-        return entity;
-    }
     @DELETE
     @Path("{idClient}")
     @Transactional
@@ -63,5 +48,27 @@ public class CreditCardResource {
         }
         creditCardService.delete(entity.getIdCreditCard());
         return Response.status(204).build();
+    }
+    @PUT
+    @Path("{idClient}")
+    @Transactional
+    public CreditCardEntity updateClient(@PathParam("idClient") Long idClient, CreditCardEntity creditCard) {
+
+        CreditCardEntity entity = creditCardService.findById(idClient);
+        if (entity == null) {
+            throw new WebApplicationException("Credit Card with id of " + idClient + " does not exist.", 404);
+        }
+
+        entity.setCardNumber(creditCard.getCardNumber());
+        entity.setPin(creditCard.getPin());
+        entity.setExpirationDate(creditCard.getExpirationDate());
+        entity.setValidationCode(creditCard.getValidationCode());
+        entity.setCutoffDate(creditCard.getCutoffDate());
+        entity.setMonthlyPaymentDate(creditCard.getMonthlyPaymentDate());
+        entity.setCurrentBalance(creditCard.getCurrentBalance());
+        entity.setCreditLimit(creditCard.getCreditLimit());
+        creditCardService.save(entity);
+
+        return entity;
     }
 }
