@@ -50,13 +50,13 @@ public class CreditCardResource {
         return Response.status(204).build();
     }
     @PUT
-    @Path("{idClient}")
+    @Path("{idCreditCard}")
     @Transactional
-    public CreditCardEntity updateClient(@PathParam("idClient") Long idClient, CreditCardEntity creditCard) {
+    public CreditCardEntity updateClient(@PathParam("idCreditCard") Long idCreditCard, CreditCardEntity creditCard) {
 
-        CreditCardEntity entity = creditCardService.findById(idClient);
+        CreditCardEntity entity = creditCardService.findById(idCreditCard);
         if (entity == null) {
-            throw new WebApplicationException("Credit Card with id of " + idClient + " does not exist.", 404);
+            throw new WebApplicationException("Credit Card with id of " + idCreditCard + " does not exist.", 404);
         }
 
         entity.setCardNumber(creditCard.getCardNumber());
