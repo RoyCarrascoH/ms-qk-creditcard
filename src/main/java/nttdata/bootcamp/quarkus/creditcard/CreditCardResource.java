@@ -34,9 +34,6 @@ public class CreditCardResource {
     @POST
     @Transactional
     public Response create(CreditCardEntity creditCardEntity) {
-        if (creditCardEntity.getIdCreditCard() != null) {
-            throw new WebApplicationException("Id was invalidly set on request.", 422);
-        }
         creditCardService.save(creditCardEntity);
         return Response.ok(creditCardEntity).status(201).build();
     }
