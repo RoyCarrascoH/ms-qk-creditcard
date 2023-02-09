@@ -18,12 +18,11 @@ public class CreditCardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCreditCard;
-    private String cardNumber;
-    private int pin;
-    private String expirationDate;
-    private String validationCode;
-    private String cutoffDate;
-    private String monthlyPaymentDate;
-    private double currentBalance;
+    private String descripcion;
     private double creditLimit;
+    private String cardNumber;
+    private int cvv;
+    private String expirationDate;
+    private String closingDate;
+    private String lastOfPay;
 }

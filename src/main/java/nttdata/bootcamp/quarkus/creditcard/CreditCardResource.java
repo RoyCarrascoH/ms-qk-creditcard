@@ -58,15 +58,15 @@ public class CreditCardResource {
         if (entity == null) {
             throw new WebApplicationException("Credit Card with id of " + idCreditCard + " does not exist.", 404);
         }
-
         entity.setCardNumber(creditCard.getCardNumber());
-        entity.setPin(creditCard.getPin());
-        entity.setExpirationDate(creditCard.getExpirationDate());
-        entity.setValidationCode(creditCard.getValidationCode());
-        entity.setCutoffDate(creditCard.getCutoffDate());
-        entity.setMonthlyPaymentDate(creditCard.getMonthlyPaymentDate());
-        entity.setCurrentBalance(creditCard.getCurrentBalance());
+        entity.setDescripcion(creditCard.getDescripcion());
         entity.setCreditLimit(creditCard.getCreditLimit());
+        entity.setCardNumber(creditCard.getCardNumber());
+        entity.setCvv(creditCard.getCvv());
+        entity.setExpirationDate(creditCard.getExpirationDate());
+        entity.setClosingDate(creditCard.getClosingDate());
+        entity.setLastOfPay(creditCard.getLastOfPay());
+
         creditCardService.save(entity);
 
         return entity;
