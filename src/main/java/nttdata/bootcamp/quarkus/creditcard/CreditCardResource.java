@@ -30,7 +30,7 @@ public class CreditCardResource {
             creditCardResponse.setCreditCard(null);
         }else if(creditCard.size()==0){
             creditCardResponse.setCodigoRespuesta(1);
-            creditCardResponse.setMensajeRespuesta("No existen clientes");
+            creditCardResponse.setMensajeRespuesta("No existen credit cards");
             creditCardResponse.setCreditCard(creditCard);
         }else{
             creditCardResponse.setCodigoRespuesta(0);
@@ -69,7 +69,7 @@ public class CreditCardResource {
     @PUT
     @Path("{idCreditCard}")
     @Transactional
-    public CreditCardEntity updateClient(@PathParam("idCreditCard") Long idCreditCard, CreditCardEntity creditCard) {
+    public CreditCardEntity updateCreditCard(@PathParam("idCreditCard") Long idCreditCard, CreditCardEntity creditCard) {
 
         CreditCardEntity entity = creditCardService.findById(idCreditCard);
         if (entity == null) {
@@ -78,6 +78,7 @@ public class CreditCardResource {
         entity.setCreditCardNumber(creditCard.getCreditCardNumber());
         entity.setDescripcion(creditCard.getDescripcion());
         entity.setCreditLimit(creditCard.getCreditLimit());
+        entity.setBalanceAvailable(creditCard.getBalanceAvailable());
         entity.setCvv(creditCard.getCvv());
         entity.setExpirationDate(creditCard.getExpirationDate());
         entity.setClosingDate(creditCard.getClosingDate());

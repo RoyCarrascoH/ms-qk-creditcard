@@ -20,6 +20,7 @@ public class CreditCardEntity {
     private Long idCreditCard;
     private String descripcion;
     private double creditLimit;
+    private double balanceAvailable;
     private String creditCardNumber;
     private int cvv;
     private String expirationDate;
