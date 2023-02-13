@@ -20,7 +20,7 @@ public class CreditCardResource {
     @Inject
     private CreditCardService creditCardService;
     @GET
-    public CreditCardResponse getClients() {
+    public CreditCardResponse getCreditCard() {
 
         CreditCardResponse creditCardResponse = new CreditCardResponse();
         List<CreditCardEntity>creditCard= creditCardService.listAll();
