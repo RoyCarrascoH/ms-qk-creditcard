@@ -9,12 +9,8 @@ import nttdata.bootcamp.quarkus.creditcard.repository.CreditCardRepository;
 import nttdata.bootcamp.quarkus.creditcard.service.CreditCardService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest

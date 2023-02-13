@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Cacheable
-@Table(name = "CLIENTS")
+@Table(name = "clients")
 public class Client extends PanacheEntityBase {
 
     @Id
