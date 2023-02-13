@@ -1,5 +1,6 @@
 package nttdata.bootcamp.quarkus.creditcard.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,15 +15,19 @@ import lombok.Setter;
 @Cacheable
 @Table(name = "CREDITCARD")
 public class CreditCardEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCreditCard;
     private String descripcion;
     private double creditLimit;
-    private String cardNumber;
+    private String creditCardNumber;
     private int cvv;
     private String expirationDate;
     private String closingDate;
     private String lastOfPay;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "idClient")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Client client;
 }
